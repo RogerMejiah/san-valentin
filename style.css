@@ -1,0 +1,282 @@
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui, sans-serif}
+
+body{
+  min-height:100vh;
+  background: #FFEAD3;
+  overflow:hidden;
+}
+
+.screen{
+  position:absolute;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  
+}
+
+.screen.active{display:flex;}
+
+.topbar{
+  position:absolute;
+  top:0;
+  width:100%;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+  color:#FFEAD3;
+  background:rgb(158, 59, 59);
+}
+
+.paper{
+  background:var(--paper);
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 40px #EA7B7B;
+}
+
+.paper h1{
+  margin-bottom:20px;
+  color:#9E3B3B;
+}
+
+.buttons{
+  margin:20px 0;
+  display: flex;
+  position:relative;
+  height:60px;
+  justify-content: center;
+  gap: 1000px;          
+}
+
+.btn{
+  padding:12px 24px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  position:absolute;
+  color: #000000;
+}
+
+.yes{left:20%;background:#6CA651;}
+.no{right:20%;background:#BF4646;}
+
+.envelope{
+  margin:20px auto 0;
+  position:relative;
+  width:120px;
+  height:80px;
+}
+
+.env-body{
+  width:100%;
+  height:100%;
+  background:#EA7B7B;
+  border-radius:8px;
+}
+
+.env-top{
+  position:absolute;
+  top:0;
+  width:100%;
+  height:50%;
+  background:#D25353;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+}
+
+.env-heart{
+  position:absolute;
+  top:25px;
+  left:50%;
+  transform:translateX(-50%);
+  color:white;
+  font-size:24px;
+  animation: latidoCorazon 1.2s ease infinite;
+}
+
+@keyframes latidoCorazon{
+  0%, 100%{transform:translateX(-50%) scale(1);}
+  50%{transform:translateX(-50%) scale(1.25);}
+}
+/* Corazones flotando */
+.hearts span{
+  position:absolute;
+  bottom:-20px;
+  width:15px;
+  height:15px;
+  background: #EA7B7B;
+
+  transform:rotate(45deg);
+  animation:floatUp 8s linear infinite;
+}
+
+.hearts span::before,
+.hearts span::after{
+  content:"";
+  position:absolute;
+  width:15px;
+  height:15px;
+  background: #EA7B7B;
+
+  border-radius:50%;
+}
+
+.hearts span::before{left:-8px}
+.hearts span::after{top:-8px}
+
+@keyframes floatUp{
+  to{transform:translateY(-110vh) rotate(45deg);opacity:0}
+}
+
+/* PANTALLA 2 */
+/* .screen2{
+  background:url("img/pantalla2.jpg") center/cover no-repeat;
+} */
+
+
+.overlay{
+  background:#9E3B3B;
+  padding:12px;
+  border-radius:20px;
+  text-align:center;
+  color:#FFEAD3;
+  white-space: pre-line;
+  box-shadow:#9E3B3B  0 10px 40px;
+  
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 480px){
+
+  .paper{
+    padding: 20px;
+  }
+
+  .overlay{
+    width: 90%;
+    padding: 15px;
+  }
+
+  .overlay h2{
+    font-size: 20px;
+  }
+
+  .overlay p{
+    font-size: 14px;
+  }
+
+  .foto-yohenakiss{
+    max-width: 180px;
+  }
+
+  .btn{
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}
+
+/* .back{
+  margin-top:15px;
+  background:white;
+  box-shadow:0 10px 40px #EA7B7B;
+} */
+
+.foto-yohenakiss{
+    width: 35%;
+    max-width: 150px;
+    /* margin: 10px 0 20px; */
+    border-radius: 15px;
+    /* box-shadow: 0 10px 25px rgb(0, 0, 0, 0.4); */
+    animation: latidoImagen 2.1s ease infinite;
+}
+@keyframes latidoImagen{
+  0%, 100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+}
+
+/* .screen2 .overlay p:first-of-type{
+    overflow: hidden;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    width:0;
+    animation: escribir 4s steps(40) forwards, cursor 0.7s infinite;
+} */
+
+@keyframes escribir{
+    to{ width: 100%;}
+}
+@keyframes cursor{
+    50% {border-color: transparent;}
+}
+
+.firma{
+    font-family: "Brush Script MT", cursive;
+    font-size: 22px;
+    margin-top: 10px;
+    opacity: 0.8;
+    animation-delay: 10s;
+}
+
+/* SHAKE DE LA CARTA */
+
+.shake-left-right{
+  animation:shake-left-right 3s ease-in-out infinite;
+  
+}
+
+ @keyframes shake-left-right{
+  0%,100%{transform:rotate(0deg);
+  transform-origin:50% 50%}
+  10%{transform:rotate(8deg)}
+  20%,40%,60%{transform:rotate(-10deg)}
+  30%,50%,70%{transform:rotate(10deg)}
+  80%{transform:rotate(-8deg)}90%{transform:rotate(8deg)}}
+
+  /* Maquina de escribir de escribir */
+
+  .typewriter{
+  overflow: hidden;
+  border-right: .15em solid white;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  display: inline-block;     /* ✅ clave */
+  width: fit-content;        /* ✅ clave */
+  max-width: 100%;           /* ✅ no se sale */
+  animation:
+    typing 7s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: transparent; }
+}
+
+/* .screen2 .overlay h2.typewriter{
+  animation-delay: 0s;
+}
+
+.screen2 .overlay p.typewriter{
+  animation-delay: 3.7s;
+} */
+
+
+
+.scale-up-center{animation:scale-up-center 0.4s; } 
+@keyframes scale-up-center{ 0%{transform:scale(.5)} 
+100%{transform:scale(1)} }
+
